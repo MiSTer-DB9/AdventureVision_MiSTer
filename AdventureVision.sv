@@ -321,8 +321,8 @@ wire  [7:0] ioctl_index;
 
 // [MiSTer-DB9 BEGIN] - DB9/SNAC8 support: USB-side joystick wires renamed
 wire [15:0] joystick0_USB, joystick1_USB;
-wire [15:0] joystick0 = joydb_1ena ? (OSD_STATUS ? 16'b0 : {8'b0, joydb_1[7:0]}) : joystick0_USB;
-wire [15:0] joystick1 = joydb_2ena ? (OSD_STATUS ? 16'b0 : {8'b0, joydb_2[7:0]}) : (joydb_1ena ? joystick0_USB : joystick1_USB);
+wire [15:0] joystick0 = joydb_1ena ? (OSD_STATUS ? 16'b0 : joydb_1_mapped[7:0]) : joystick0_USB;
+wire [15:0] joystick1 = joydb_2ena ? (OSD_STATUS ? 16'b0 : joydb_2_mapped[7:0]) : (joydb_1ena ? joystick0_USB : joystick1_USB);
 // [MiSTer-DB9 END]
 wire [21:0] gamma_bus;
 
